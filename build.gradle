@@ -2,6 +2,8 @@ apply plugin: 'java'
 
 sourceSets.main.java.srcDirs = ['src']
 
+jar.archiveName = "GradleJenkinsTest.jar"
+
 
 jar {
     manifest {
