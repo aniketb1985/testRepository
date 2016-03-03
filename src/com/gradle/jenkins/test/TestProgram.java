@@ -9,7 +9,7 @@ public class TestProgram {
 
 	public static void main(String[] args) {
 		try {
-			String content = "This is the content to write into file.";
+			String content = "This is the content to write into file./n This is the first change in the file.";
 
 			File file = new File("C:/ImpData/GradleJenkinsTest.txt");
 
