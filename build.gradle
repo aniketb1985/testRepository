@@ -1,12 +1,12 @@
 apply plugin: 'java'
-
+apply plugin: 'checkstyle'
 sourceSets.main.java.srcDirs = ['src']
-
 jar.archiveName = "GradleJenkinsTest.jar"
-
-
 jar {
     manifest {
         attributes 'Main-Class': 'com.gradle.jenkins.test.TestProgram'
     }
+}
+repositories {
+    mavenCentral()
 }
