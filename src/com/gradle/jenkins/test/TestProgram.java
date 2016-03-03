@@ -9,9 +9,9 @@ public class TestProgram {
 
 	public static void main(String[] args) {
 		try {
-			String content = "This is the content to write into file./n This is the first change in the file.";
+			String content = "This is the content to write into file.\n This is the first change in the file.";
 
-			File file = new File("C:/ImpData/GradleJenkinsTest.txt");
+			File file = new File("GradleJenkinsTest.txt");
 
 			// if file doesnt exists, then create it
 			if (!file.exists()) {
