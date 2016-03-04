@@ -1,5 +1,6 @@
 apply plugin: 'java'
 apply plugin: 'checkstyle'
+apply plugin: 'pmd'
 sourceSets.main.java.srcDirs = ['src']
 jar.archiveName = "GradleJenkinsTest.jar"
 jar {
@@ -10,3 +11,16 @@ jar {
 repositories {
     mavenCentral()
 }
+
+task onlySpecifiesCodeForConfigurationPhase {
+    group 'test'
+    description 'Configuration phase task example.'
+
+    println 'I always get printed even though, I am not invoked'
+}
+
+task anotherUnrelatedTask {
+    doLast{
+        println 'I am in the doLast execution phase'
+    }
+}  
