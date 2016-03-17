@@ -4,7 +4,8 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-//This changes are to check the pull request feature.
+// This changes are to check the pull request feature.
+// Will remove this change once tested.
 public class TestProgram {
 
   public static void main(String[] args) {
