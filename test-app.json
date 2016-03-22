@@ -1,5 +1,5 @@
 {
-  "id": "test-app-2",
+  "id": "test-jenkins-app",
   "cpus": 0.5,
   "mem": 64.0,
   "container": {
