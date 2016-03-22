@@ -23,4 +23,47 @@ task anotherUnrelatedTask {
     doLast{
         println 'I am in the doLast execution phase'
     }
-}  
+}
+
+buildscript {
+    repositories {
+        maven {
+            url 'http://172.27.44.56:8081/artifactory/plugins-release'
+            credentials {
+                username = "admin"
+                password = "password"
+            }
+        }
+        
+    }
+    dependencies {
+        //Check for the latest version here: http://plugins.gradle.org/plugin/com.jfrog.artifactory
+        classpath "org.jfrog.buildinfo:build-info-extractor-gradle:4+"
+    }
+}
+
+allprojects {
+    apply plugin: "com.jfrog.artifactory"
+}
+
+artifactory {
+    contextUrl = "${artifactory_contextUrl}"   //The base Artifactory URL if not overridden by the publisher/resolver
+    publish {
+        repository {
+            repoKey = 'libs-release-local'
+            username = "admin"
+            password = "password"
+            maven = true
+            
+        }
+    }
+    resolve {
+        repository {
+            repoKey = 'libs-release'
+            username = "admin"
+            password = "password"
+            maven = true
+            
+        }
+    }
+}
