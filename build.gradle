@@ -1,6 +1,7 @@
 apply plugin: 'java'
 apply plugin: 'checkstyle'
 apply plugin: 'pmd'
+apply plugin: 'maven-publish'
 sourceSets.main.java.srcDirs = ['src']
 jar.archiveName = "GradleJenkinsTest.jar"
 jar {
@@ -59,14 +60,18 @@ artifactory {
             
         }
     }
-	defaults {
-        publishArtifacts = true
-        publications ('maven')
-
-        // Properties to be attached to the published artifacts.
-        properties = ['qa.level': 'basic', 'dev.team': 'core']
-        // Publish generated POM files to Artifactory (true by default)
-        publishPom = true
-    }
+    artifactoryPublish {
+		skip = false //Skip build info analysis and publishing (false by default)
+		contextUrl = '${artifactory_contextUrl}'
+		publications ('test-app.json')
+		properties = ['qa.level': 'basic', 'q.os': 'win32, deb, osx']
+		properties {
+			c '**:**:**:*@*', cProperty: 'only in c'
+		}
+		clientConfig.publisher.repoKey = '${artifactory_repoKey}'
+		clientConfig.publisher.username = '${artifactory_user}'
+		clientConfig.publisher.password = '${artifactory_password}'
+	}
+	
 }
 
