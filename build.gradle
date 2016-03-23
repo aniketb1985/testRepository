@@ -40,7 +40,7 @@ allprojects {
 }
 
 artifactory {
-    contextUrl = "${artifactory_contextUrl}"   //The base Artifactory URL if not overridden by the publisher/resolver
+    contextUrl = "http://172.27.44.56:8081/artifactory"   //The base Artifactory URL if not overridden by the publisher/resolver
     publish {
         repository {
             repoKey = 'libs-release-local'
