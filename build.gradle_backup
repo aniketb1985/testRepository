@@ -27,7 +27,14 @@ task anotherUnrelatedTask {
 
 buildscript {
     repositories {
-        jcenter()
+        maven {
+            url 'http://172.27.44.56:8081/artifactory/plugins-release'
+            credentials {
+                username = "admin"
+                password = "password"
+            }
+        }
+        
     }
     dependencies {
         //Check for the latest version here: http://plugins.gradle.org/plugin/com.jfrog.artifactory
