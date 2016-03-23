@@ -40,22 +40,34 @@ allprojects {
 }
 
 artifactory {
-    contextUrl = "http://172.27.44.56:8081/artifactory"   //The base Artifactory URL if not overridden by the publisher/resolver
+    contextUrl = "${artifactory_contextUrl}"   //The base Artifactory URL if not overridden by the publisher/resolver
     publish {
         repository {
-            repoKey = 'gradle-test-repo'
-            username = "admin"
-            password = "password"
+            repoKey = '${artifactory_repoKey}'
+            username = "${artifactory_user}"
+            password = "${artifactory_password}"
             maven = false
             
         }
     }
+	artifactoryPublish {
+		skip = false //Skip build info analysis and publishing (false by default)
+		contextUrl = '${artifactory_contextUrl}'
+		publications ('test-app.json')
+		properties = ['qa.level': 'basic', 'q.os': 'win32, deb, osx']
+		properties {
+			c '**:**:**:*@*', cProperty: 'only in c'
+		}
+		clientConfig.publisher.repoKey = '${artifactory_repoKey}'
+		clientConfig.publisher.username = '${artifactory_user}'
+		clientConfig.publisher.password = '${artifactory_password}'
+	}
     resolve {
         repository {
-            repoKey = 'gradle-test-repo'
-            username = "admin"
-            password = "password"
-            maven = false
+            repoKey = 'libs-releases'
+            username = "${artifactory_user}"
+            password = "${artifactory_password}"
+            maven = true
             
         }
     }
