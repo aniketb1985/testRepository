@@ -50,6 +50,9 @@ artifactory {
             maven = false
             
         }
+		defaults {
+			publications('mavenJava')
+		}
     }
     resolve {
         repository {
@@ -60,18 +63,5 @@ artifactory {
             
         }
     }
-    artifactoryPublish {
-		skip = false //Skip build info analysis and publishing (false by default)
-		contextUrl = '${artifactory_contextUrl}'
-		publications ('test-app.json')
-		properties = ['qa.level': 'basic', 'q.os': 'win32, deb, osx']
-		properties {
-			c '**:**:**:*@*', cProperty: 'only in c'
-		}
-		clientConfig.publisher.repoKey = '${artifactory_repoKey}'
-		clientConfig.publisher.username = '${artifactory_user}'
-		clientConfig.publisher.password = '${artifactory_password}'
-	}
-	
 }
 
