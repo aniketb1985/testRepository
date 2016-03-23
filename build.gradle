@@ -64,7 +64,7 @@ artifactory {
 artifactoryPublish {
 	skip = false //Skip build info analysis and publishing (false by default)
 	contextUrl = '${artifactory_contextUrl}'
-	publications ('test-app.json')
+	publications ('a','b','c')
 	properties = ['qa.level': 'basic', 'q.os': 'win32, deb, osx']
 	properties {
 		c '**:**:**:*@*', cProperty: 'only in c'
