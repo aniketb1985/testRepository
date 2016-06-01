@@ -10,7 +10,7 @@ jar {
     }
 }
 repositories {
-    mavenCentral('')
+    mavenCentral()
 }
 
 task onlySpecifiesCodeForConfigurationPhase {
